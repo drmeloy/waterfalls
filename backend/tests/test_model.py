@@ -1,7 +1,6 @@
 from django.test import TestCase
-from .models import Waterfall
+from ..models import Waterfall
 
-# Test for Waterfall model
 class WaterfallTest(TestCase):
   def setUp(self):
     Waterfall.objects.create(
@@ -14,10 +13,10 @@ class WaterfallTest(TestCase):
   def test_waterfall(self):
     super_falls = Waterfall.objects.get(name='Super Falls')
     lame_falls = Waterfall.objects.get(name='Lame Falls')
-
     self.assertEqual(
-      super_falls.describe_waterfall(), 'Super Falls is 555 ft tall and is located at 123 N and 321 W.'
+      super_falls.describe_waterfall(), 'Super Falls is 555 ft. tall and is located at 123 N and 321 W.'
     )
     self.assertEqual(
-      lame_falls.describe_waterfall(), 'Lame Falls is 7 ft tall and is located at 987 S and 789 E.'
+      lame_falls.describe_waterfall(), 'Lame Falls is 7 ft. tall and is located at 987 S and 789 E.'
     )
+    
