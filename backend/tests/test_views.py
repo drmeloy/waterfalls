@@ -56,3 +56,36 @@ class WaterfallApiPostTests(APITestCase):
     response = self.client.post('/api/waterfalls/', invalid_data)
     self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
+class WaterfallApiPutTests(APITestCase):
+  def setUp(self):
+    Waterfall.objects.create(
+      name='Super Falls', height='555 ft.', longitude='123 N', latitude='321 W', description='Super cool falls')
+
+  def test_update_waterfall_valid(self):
+    valid_data = {"name": "Mega Falls", "height": "1000 ft.", "longitude": "999 N", "latitude": "999 W", "description": "Mega awesome falls"}
+    response = self.client.put('/api/waterfalls/1/', valid_data)
+    waterfall = Waterfall.objects.get(pk=1)
+    serializer = WaterfallSerializer(waterfall)
+    self.assertEqual(response.data, serializer.data)
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+  def test_update_waterfall_invalid_no_name(self):
+    invalid_data = {"name": "", "height": "1000 ft.", "longitude": "999 N", "latitude": "999 W", "description": "Mega awesome falls"}
+    response = self.client.put('/api/waterfalls/1/', invalid_data)
+    self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+  def test_update_waterfall_invalid_no_height(self):
+    invalid_data = {"name": "Mega Falls", "height": "", "longitude": "999 N", "latitude": "999 W", "description": "Mega awesome falls"}
+    response = self.client.put('/api/waterfalls/1/', invalid_data)
+    self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+  def test_update_waterfall_invalid_no_longitude(self):
+    invalid_data = {"name": "Mega Falls", "height": "1000 ft.", "longitude": "", "latitude": "999 W", "description": "Mega awesome falls"}
+    response = self.client.put('/api/waterfalls/1/', invalid_data)
+    self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+  def test_update_waterfall_invalid_no_latitude(self):
+    invalid_data = {"name": "Mega Falls", "height": "1000 ft.", "longitude": "999 N", "latitude": "", "description": "Mega awesome falls"}
+    response = self.client.put('/api/waterfalls/1/', invalid_data)
+    self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+    
