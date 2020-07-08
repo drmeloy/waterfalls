@@ -1,5 +1,3 @@
-import json
-from django.urls import reverse
 from rest_framework.test import APITestCase
 from rest_framework import status
 from ..models import Waterfall
@@ -88,4 +86,16 @@ class WaterfallApiPutTests(APITestCase):
     invalid_data = {"name": "Mega Falls", "height": "1000 ft.", "longitude": "999 N", "latitude": "", "description": "Mega awesome falls"}
     response = self.client.put('/api/waterfalls/1/', invalid_data)
     self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-    
+
+class WaterfallApiDeleteTests(APITestCase):
+  def setUp(self):
+    Waterfall.objects.create(
+      name='Super Falls', height='555 ft.', longitude='123 N', latitude='321 W', description='Super cool falls')
+
+  def test_delete_waterfall_valid(self):
+    response = self.client.delete('/api/waterfalls/1/')
+    self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+  def test_delete_waterfall_invalid(self):
+    response = self.client.delete('/api/waterfalls/999/')
+    self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
