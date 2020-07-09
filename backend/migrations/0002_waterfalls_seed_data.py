@@ -11,6 +11,21 @@ def seed_data(apps, schema_editor):
         longitude='-122.65887',
         description="South Falls is THE waterfall in Silver Falls State Park. At 177 feet, it is the second tallest waterfall in the park, and it's the tallest single drop. It's easily accessed by a paved trail from the South Falls Lodge. A number of educational and historic markers dot the area, along with stone walls and benches carved from logs.").save()
 
+    Waterfall(
+        name='Multnomah Falls',
+        height='620 ft',
+        latitude='45.5762',
+        longitude='-122.1158',
+        description="Multnomah Falls is the tallest waterfall in Oregon.").save()
+
+    Waterfall(
+        name='Punch Bowl Falls',
+        height='36 ft',
+        latitude='45.62162',
+        longitude='-121.89455',
+        description="DescriptionPunch Bowl Falls is a waterfall on Eagle Creek in the Columbia River Gorge National Scenic Area, Oregon, United States. Eagle Creek drains into the Columbia River, with its outlet on the Columbia River Gorge in Multnomah County. The falls is 35 feet tall and 10 feet wide.").save()
+    
+
 class Migration(migrations.Migration):
     dependencies = [
         ('backend', '0001_initial'),
