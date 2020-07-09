@@ -23,8 +23,14 @@ def seed_data(apps, schema_editor):
         height='36 ft',
         latitude='45.62162',
         longitude='-121.89455',
-        description="DescriptionPunch Bowl Falls is a waterfall on Eagle Creek in the Columbia River Gorge National Scenic Area, Oregon, United States. Eagle Creek drains into the Columbia River, with its outlet on the Columbia River Gorge in Multnomah County. The falls is 35 feet tall and 10 feet wide.").save()
-    
+        description="Punch Bowl Falls is a waterfall on Eagle Creek in the Columbia River Gorge National Scenic Area, Oregon, United States. Eagle Creek drains into the Columbia River, with its outlet on the Columbia River Gorge in Multnomah County. The falls is 35 feet tall and 10 feet wide.").save()
+
+    Waterfall(
+        name='Ramona Falls',
+        height='120 ft',
+        latitude='45.3798',
+        longitude='-121.7759',
+        description="Ramona Falls is a waterfall on the upper Sandy River on the west side of Mount Hood, Oregon, United States. It is located in forest along the Pacific Crest Trail at an elevation of 3,560 feet.").save()
 
 class Migration(migrations.Migration):
     dependencies = [
