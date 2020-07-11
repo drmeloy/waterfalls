@@ -64,4 +64,6 @@ The fields `"id"`, `"createdAt"`, and `"updatedAt"` are handled automatically by
 ### Connecting and troubleshooting
 The web server is hosted on a free tier of AWS EC2. Due to the hardware restrictions of free tier service, API connections may be blocked or interrupted. The web server attempts to provide its self-generated SSL certificate to allow for HTTPS connections, but sometimes the user's browser or hardware settings may warn the user of an untrusted certificate or block the connection entirely. In this situation, the user can attempt to modify proxy and security settings on their system to allow incoming data from untrusted certificates.
 
+If you are experiencing difficulties connecting to this API, please feel free to reach out to me at drmeloy@gmail.com and I will try to help you resolve any issues. Thank you!
+
 # Thank you for using the Waterfalls of Oregon API!
